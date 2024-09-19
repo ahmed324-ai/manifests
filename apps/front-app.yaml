@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: front-app
-  namespace: dependency-track
+  namespace: dependency
 spec:
   project: default
   source:
