@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: dtrack-apiserver
-          image: dependencytrack/apiserver
+          image: rancher/rancher:v2.9.2-rc1
           ports:
             - containerPort: 8080
           env:
