@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: front-app
+  namespace: dep
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/ahmed324-ai/manifests'
+    path: manifests/front
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: dependency-track
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

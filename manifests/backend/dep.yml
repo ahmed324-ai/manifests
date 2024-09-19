@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dtrack-apiserver
+  namespace: dependency-track
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dtrack-apiserver
+  template:
+    metadata:
+      labels:
+        app: dtrack-apiserver
+    spec:
+      containers:
+        - name: dtrack-apiserver
+          image: dependencytrack/apiserver
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ALPINE_DATABASE_MODE
+              value: external
+            - name: ALPINE_DATABASE_URL
+              value: jdbc:postgresql://postgres:5432/test
+            - name: ALPINE_DATABASE_DRIVER
+              value: org.postgresql.Driver
+            - name: ALPINE_DATABASE_USERNAME
+              value: test
+            - name: ALPINE_DATABASE_PASSWORD
+              value: test

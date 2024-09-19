@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dtrack-frontend
+  namespace: dependency-track
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dtrack-frontend
+  template:
+    metadata:
+      labels:
+        app: dtrack-frontend
+    spec:
+      containers:
+        - name: dtrack-frontend
+          image: dependencytrack/frontend
+          ports:
+            - containerPort: 8080
+          env:
+            - name: API_BASE_URL
+              value: http://dtrack-apiserver:8080

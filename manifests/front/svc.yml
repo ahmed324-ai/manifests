@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dtrack-frontend
+  namespace: dependency-track
+spec:
+  ports:
+    - port: 8080
+  selector:
+    app: dtrack-frontend
+  type: ClusterIP
